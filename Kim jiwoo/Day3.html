@@ -1,0 +1,20 @@
+<p>User:</p>
+<input type="user" placeholder="user" id="user">
+<br><br>
+<button onclick="login()">Login</button>
+
+<script>
+    function login()
+    {
+        user = document.getElementById('user').value
+        if (user == "user1")
+        {
+            alert('Valid')
+        }
+        else
+        {
+            alert('Invalid')
+        }
+    
+    }   
+</script>
