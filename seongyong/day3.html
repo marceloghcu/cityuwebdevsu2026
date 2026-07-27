@@ -1,19 +1,306 @@
-<p>User:</p>
-<input type="user" placeholder="user" id="user">
-<br><br>
-<button onclick="login()">Login</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-    function login()
-    {
-        user = document.getElementById('user').value
-        if (user =='user1')
-        {
-            lert('Valid')
+    <title>Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        else
-        {
-            alert('Invalid')
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, #48d1cc 0%, transparent 30%),
+                radial-gradient(circle at bottom right, #7b61ff 0%, transparent 35%),
+                #f4f6fb;
         }
-    }
-</script>
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 42px 36px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 20px 55px rgba(0, 0, 0, 0.15);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-header h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            color: #252525;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            height: 52px;
+            padding: 0 48px 0 16px;
+            border: 1px solid #d8dce4;
+            border-radius: 12px;
+            outline: none;
+            font-size: 15px;
+            transition: 0.2s ease;
+            background-color: #fafbfc;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #7367f0;
+            background-color: white;
+            box-shadow: 0 0 0 4px rgba(115, 103, 240, 0.1);
+        }
+
+        .icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 18px;
+        }
+
+        .login-button {
+            width: 100%;
+            height: 54px;
+            border: none;
+            border-radius: 14px;
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            background: linear-gradient(
+                90deg,
+                #29cfc3,
+                #7659f5
+            );
+            transition: 0.2s ease;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(104, 89, 240, 0.25);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .result-message {
+            display: none;
+            margin-top: 18px;
+            padding: 13px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .valid {
+            display: block;
+            color: #157347;
+            background-color: #d1e7dd;
+            border: 1px solid #badbcc;
+        }
+
+        .invalid {
+            display: block;
+            color: #842029;
+            background-color: #f8d7da;
+            border: 1px solid #f5c2c7;
+        }
+
+        .footer-text {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 20px;
+            }
+
+            .login-container {
+                padding: 34px 24px;
+            }
+
+            .login-header h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-header">
+            <h1>Login</h1>
+            <p>Enter your username and password</p>
+        </div>
+
+        <div class="form-group">
+            <label for="user">Username</label>
+
+            <div class="input-wrapper">
+                <input
+                    type="text"
+                    id="user"
+                    placeholder="Type your username"
+                    autocomplete="username"
+                >
+
+                <span class="icon">👤</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+
+            <div class="input-wrapper">
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Type your password"
+                    autocomplete="current-password"
+                >
+
+                <span class="icon">🔒</span>
+            </div>
+        </div>
+
+        <button
+            type="button"
+            class="login-button"
+            onclick="login()"
+        >
+            LOGIN
+        </button>
+
+        <div
+            id="resultMessage"
+            class="result-message"
+        ></div>
+
+        <p class="footer-text">
+            Login Authentication System
+        </p>
+
+    </div>
+
+
+    <script>
+        async function login() {
+
+            const username =
+                document.getElementById("user").value.trim();
+
+            const password =
+                document.getElementById("password").value.trim();
+
+            const resultMessage =
+                document.getElementById("resultMessage");
+
+
+            if (!username || !password) {
+
+                resultMessage.className =
+                    "result-message invalid";
+
+                resultMessage.textContent =
+                    "Please enter both username and password.";
+
+                return;
+            }
+
+
+            try {
+
+                const response = await fetch(
+                    `http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+                );
+
+                const result =
+                    (await response.text()).trim();
+
+
+                if (result === "valid") {
+
+                    resultMessage.className =
+                        "result-message valid";
+
+                    resultMessage.textContent =
+                        "✓ Login successful";
+
+                } else {
+
+                    resultMessage.className =
+                        "result-message invalid";
+
+                    resultMessage.textContent =
+                        "✕ Invalid username or password";
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+                resultMessage.className =
+                    "result-message invalid";
+
+                resultMessage.textContent =
+                    "Cannot connect to the Flask server.";
+            }
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+                    login();
+                }
+            }
+        );
+    </script>
+
+</body>
+</html>
