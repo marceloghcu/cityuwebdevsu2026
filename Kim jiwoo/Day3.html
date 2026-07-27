@@ -82,14 +82,18 @@
             const password = document.getElementById('password').value;
 
             if (username === 'user1' && password === 'pass1') {
-                alert('Valid');
+                window.location.href = `welcome.html?username=${encodeURIComponent(username)}`;
                 return;
             }
 
             try {
                 const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
                 const result = (await response.text()).trim().toLowerCase();
-                alert(result === 'valid' ? 'Valid' : 'Invalid');
+                if (result === 'valid') {
+                    window.location.href = `welcome.html?username=${encodeURIComponent(username)}`;
+                } else {
+                    alert('Invalid');
+                }
             } catch (error) {
                 alert('Invalid');
             }
