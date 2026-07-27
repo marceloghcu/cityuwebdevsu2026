@@ -1,26 +1,128 @@
-<p>Username:</p>
-<input type="text" placeholder="username" id="user">
-<p>Password:</p>
-<input type="password" placeholder="password" id="password">
-<br><br>
-<button onclick="login()">Login</button>
-
-<script>
-    async function login() {
-        const username = document.getElementById('user').value;
-        const password = document.getElementById('password').value;
-
-        try {
-            const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
-            const result = await response.text();
-
-            if (result === 'valid') {
-                alert('Valid');
-            } else {
-                alert('Invalid');
-            }
-        } catch (error) {
-            alert('Login request failed');
-        }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+      background: linear-gradient(135deg, #ffeef8, #eef7ff, #fff7d6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
-</script>
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 32px 28px;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(180, 120, 180, 0.2);
+      width: 330px;
+      border: 2px solid #f6d9f2;
+    }
+
+    .emoji {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      color: #8b5cf6;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #5b5b8a;
+      font-size: 13px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border: 2px solid #f3cfe7;
+      border-radius: 999px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background: #fffdfd;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #ff9fc1;
+      box-shadow: 0 0 0 3px rgba(255, 159, 193, 0.2);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fb1, #8ec5ff, #a78bfa);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 6px;
+      box-shadow: 0 6px 14px rgba(168, 85, 247, 0.2);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="emoji">🌸</div>
+    <h2>Welcome Back</h2>
+    <div class="subtitle">Please sign in to continue</div>
+
+    <label for="user">Username</label>
+    <input type="text" placeholder="Enter username" id="user" />
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter password" id="password" />
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    async function login() {
+      const username = document.getElementById('user').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+        const result = await response.text();
+
+        if (result === 'valid') {
+          alert('Valid');
+        } else {
+          alert('Invalid');
+        }
+      } catch (error) {
+        alert('Login request failed');
+      }
+    }
+  </script>
+</body>
+</html>
