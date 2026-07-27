@@ -1,20 +1,99 @@
-<p>User:</p>
-<input type="user" placeholder="user" id="user">
-<br><br>
-<button onclick="login()">Login</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-<script>
-    function login()
-    {
-        user = document.getElementById('user').value
-        if (user == "user1")
-        {
-            alert('Valid')
+        .login-box {
+            background: white;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 320px;
         }
-        else
-        {
-            alert('Invalid')
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
         }
-    
-    }   
-</script>
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #5b67f5;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        button:hover {
+            background: #4857e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h2>Login</h2>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'user1' && password === 'pass1') {
+                alert('Valid');
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+                const result = (await response.text()).trim().toLowerCase();
+                alert(result === 'valid' ? 'Valid' : 'Invalid');
+            } catch (error) {
+                alert('Invalid');
+            }
+        }
+    </script>
+</body>
+</html>
