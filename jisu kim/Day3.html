@@ -6,17 +6,22 @@
 <button onclick="login()">Login</button>
 
 <script>
-    function login(username, password)
-    {
-        username = document.getElementById('username').value
-        password = document.getElementById('password').value
-        if (username == "user1" && password == "pass123")
-        {
-            alert('Valid')
-        }
-        else
-        {
-            alert('Invalid')
+    async function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+            const result = await response.text();
+
+            if (result === 'valid') {
+                alert('valid');
+            } else {
+                alert('invalid');
+            }
+        } catch (error) {
+            alert('Login request failed');
+            console.error(error);
         }
     }
 </script>
