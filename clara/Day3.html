@@ -1,19 +1,101 @@
-<p>User:</p>
-<input type="user" placeholder="User" id="user">
-<br><br>
-<button onclick="login()">Login</button>
-
-<script>
-    function login()
-{
-        user=document.getElementById('user').value
-        if (user=="user1")
-    {
-        alert("Valid")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7ff, #e9f0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    else
-    {
-        alert("Invalid")
-    }    
-}
-</script>
+
+    .login-box {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      width: 320px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+      color: #1f2937;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #374151;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <label for="user">Username</label>
+    <input type="text" placeholder="Enter username" id="user">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Enter password" id="password">
+
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    async function login() {
+      const user = document.getElementById('user').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(user)}&password=${encodeURIComponent(password)}`);
+        const result = await response.text();
+        alert(result === 'valid' ? 'Valid' : 'Invalid');
+      } catch (error) {
+        alert('Unable to reach login service');
+      }
+    }
+  </script>
+</body>
+</html>
