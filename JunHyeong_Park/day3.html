@@ -1,19 +1,26 @@
-<p>user:</p>
-<input type="user" placeholder="user" id="user">
+<p>Username:</p>
+<input type="text" placeholder="username" id="user">
+<p>Password:</p>
+<input type="password" placeholder="password" id="password">
 <br><br>
 <button onclick="login()">Login</button>
 
 <script>
-    function login()
-    {
-        user = document.getElementById('user').value
-       if(user == "user1")
-        {
-            alert("Valid")
-        }
-        else
-        {
-            alert("Invalid")
+    async function login() {
+        const username = document.getElementById('user').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+            const result = await response.text();
+
+            if (result === 'valid') {
+                alert('Valid');
+            } else {
+                alert('Invalid');
+            }
+        } catch (error) {
+            alert('Login request failed');
         }
     }
 </script>
