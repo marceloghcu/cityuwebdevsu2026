@@ -1,27 +1,164 @@
-<p>Username:</p>
-<input type="text" placeholder="username" id="username">
-<p>Password:</p>
-<input type="password" placeholder="password" id="password">
-<br><br>
-<button onclick="login()">Login</button>
-
-<script>
-    async function login() {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        try {
-            const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
-            const result = await response.text();
-
-            if (result === 'valid') {
-                alert('valid');
-            } else {
-                alert('invalid');
-            }
-        } catch (error) {
-            alert('Login request failed');
-            console.error(error);
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top left, #ffecb3, #ffe0f0 45%, #fa9cfb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-    }
-</script>
+
+        .login-card {
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 32px;
+            border-radius: 36px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 20px 40px rgba(230, 140, 220, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            box-sizing: border-box;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            top: -60px;
+            right: -60px;
+        }
+
+        .login-card h1 {
+            margin: 0 0 24px;
+            font-size: 2rem;
+            color: #b1579d;
+            text-align: center;
+        }
+
+        .cute-face {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .cute-face span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #ff8cd3;
+            border-radius: 50%;
+            margin: 0 6px;
+            position: relative;
+        }
+
+        .cute-face span::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            top: 6px;
+            left: 7px;
+            opacity: 0.85;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 2px solid #ffd0f0;
+            background: #fff5ff;
+            color: #5e3b5d;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .input-group input:focus {
+            border-color: #ff85d0;
+            transform: translateY(-1px);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ff80bf 0%, #ffb3ea 100%);
+            color: white;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 12px 24px rgba(255, 136, 194, 0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <section class="login-card">
+        <h1>Login</h1>
+        <div class="cute-face">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="input-group">
+            <input type="text" placeholder="Username" id="username">
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Password" id="password">
+        </div>
+
+        <button class="login-button" onclick="login()">Login</button>
+    </section>
+
+    <script>
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+                const result = await response.text();
+
+                if (result === 'valid') {
+                    window.location.href = `welcome.html?username=${encodeURIComponent(username)}`;
+                } else {
+                    alert('invalid');
+                }
+            } catch (error) {
+                alert('Login request failed');
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>
