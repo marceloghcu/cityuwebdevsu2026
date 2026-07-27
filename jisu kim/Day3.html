@@ -1,0 +1,22 @@
+<p>Username:</p>
+<input type="text" placeholder="username" id="username">
+<p>Password:</p>
+<input type="password" placeholder="password" id="password">
+<br><br>
+<button onclick="login()">Login</button>
+
+<script>
+    function login(username, password)
+    {
+        username = document.getElementById('username').value
+        password = document.getElementById('password').value
+        if (username == "user1" && password == "pass123")
+        {
+            alert('Valid')
+        }
+        else
+        {
+            alert('Invalid')
+        }
+    }
+</script>
