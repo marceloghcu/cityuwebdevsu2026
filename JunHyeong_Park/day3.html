@@ -106,21 +106,14 @@
   </div>
 
   <script>
-    async function login() {
-      const username = document.getElementById('user').value;
+    function login() {
+      const username = document.getElementById('user').value.trim();
       const password = document.getElementById('password').value;
 
-      try {
-        const response = await fetch(`http://127.0.0.1:5000/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
-        const result = await response.text();
-
-        if (result === 'valid') {
-          alert('Valid');
-        } else {
-          alert('Invalid');
-        }
-      } catch (error) {
-        alert('Login request failed');
+      if (username === 'user1' && password === 'pass1') {
+        window.location.href = `welcome.html?username=${encodeURIComponent(username)}`;
+      } else {
+        alert('invalid');
       }
     }
   </script>
