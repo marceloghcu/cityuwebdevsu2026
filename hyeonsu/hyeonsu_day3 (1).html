@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Air Flight Crew Recruitment Outlook (2026–2035)</title>
+    <style>
+        :root {
+            --kal-navy: #00256c;
+            --kal-blue: #0064de;
+            --kal-light: #e6f0fa;
+            --text-dark: #222222;
+            --text-gray: #555555;
+            --bg-color: #f4f7f6;
+            --card-border: #d0e1f9;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--kal-navy);
+            color: #ffffff;
+            padding: 60px 20px 80px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin-top: 15px;
+            color: #b3cfff;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 60px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .fleet-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            border-top: 5px solid var(--kal-blue);
+        }
+
+        .fleet-section h2 {
+            color: var(--kal-navy);
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .fleet-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 20px;
+        }
+
+        .fleet-card {
+            background: var(--kal-light);
+            padding: 22px 18px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        }
+
+        .fleet-card h3 {
+            margin: 0 0 8px 0;
+            color: var(--kal-blue);
+            font-size: 1.25rem;
+        }
+
+        .fleet-card p {
+            margin: 0;
+            font-weight: 700;
+            color: var(--kal-navy);
+            font-size: 1.1rem;
+        }
+
+        .timeline-title {
+            text-align: center;
+            color: var(--kal-navy);
+            font-size: 1.8rem;
+            margin-bottom: 45px;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--kal-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            right: -11px;
+            background-color: #ffffff;
+            border: 4px solid var(--kal-blue);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -11px;
+        }
+
+        .content {
+            padding: 30px;
+            background-color: #ffffff;
+            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--kal-navy);
+        }
+
+        .timeline-item:nth-child(even) .content {
+            border-left: none;
+            border-right: 5px solid var(--kal-navy);
+        }
+
+        .content h3 {
+            color: var(--kal-blue);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .content .badge {
+            font-size: 0.85rem;
+            background-color: var(--kal-light);
+            color: var(--kal-navy);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .content ul {
+            padding-left: 20px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .content li {
+            margin-bottom: 12px;
+        }
+
+        .content li:last-child {
+            margin-bottom: 0;
+        }
+
+        .content li strong {
+            color: var(--text-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            color: var(--text-gray);
+            background-color: #e9ecef;
+            margin-top: 60px;
+            font-size: 0.95rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+            .timeline-item::after, .timeline-item:nth-child(even)::after {
+                left: 20px;
+            }
+            .content, .timeline-item:nth-child(even) .content {
+                border-left: 5px solid var(--kal-navy);
+                border-right: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Korean Air Flight Crew Recruitment Outlook</h1>
+        <p>Projections for Flight Deck Hiring Trends Driven by Next-Generation Aircraft Induction (2026–2035)</p>
+    </header>
+
+    <div class="container">
+        <!-- Next-Gen Fleet Section -->
+        <section class="fleet-section">
+            <h2>Next-Generation Aircraft Orders</h2>
+            <p class="fleet-subtitle">Building a fleet of over 200 state-of-the-art, eco-friendly aircraft by 2034</p>
+            <div class="fleet-grid">
+                <div class="fleet-card">
+                    <h3>Boeing 777-9</h3>
+                    <p>20 Orders</p>
+                </div>
+                <div class="fleet-card">
+                    <h3>Boeing 787-10</h3>
+                    <p>30 Orders</p>
+                </div>
+                <div class="fleet-card">
+                    <h3>Airbus A350 Series</h3>
+                    <p>33 Orders</p>
+                </div>
+                <div class="fleet-card">
+                    <h3>Airbus A321neo</h3>
+                    <p>50 Orders</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="timeline-title">3-Year Triennial Flight Crew Hiring Projections</h2>
+
+        <!-- Timeline Section -->
+        <div class="timeline">
+            
+            <!-- 2026 -->
+            <div class="timeline-item">
+                <div class="content">
+                    <h3>2026 <span class="badge">✈️ Fleet Realignment</span></h3>
+                    <ul>
+                        <li><strong>Acceleration of A321neo & A350 Deliveries:</strong> Targeted recruitment for Type Rating holders and cadet First Officers to support the initial entry-into-service of newly delivered narrow-body and wide-body aircraft.</li>
+                        <li><strong>Intense Transition Training Phase:</strong> As legacy fleets (such as older A330s and B777-200ERs) begin phase-out, large-scale transition training creates temporary staffing gaps, requiring reserve pilot buffers.</li>
+                        <li><strong>Post-Merger Network Integration:</strong> Optimization of domestic and regional routes following the Asiana Airlines integration drives sustained demand for narrow-body flight crews.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2029 -->
+            <div class="timeline-item">
+                <div class="content">
+                    <h3>2029 <span class="badge">🌍 Wide-Body Expansion</span></h3>
+                    <ul>
+                        <li><strong>Full Fleet Integration of Flagship Aircraft:</strong> Active integration of the Boeing 787-10 and Boeing 777-9 increases long-haul flight schedules across North American and European routes.</li>
+                        <li><strong>High Demand for Long-Haul Crew:</strong> Surge in promotions from narrow-body First Officers to wide-body First Officers, along with elevated upgrade evaluations for Captain slots.</li>
+                        <li><strong>Major Cadet Hiring Cycle:</strong> To backfill narrow-body seats vacated by upgrading pilots, regular cadet recruitment and ab-initio pilot intake hit a major peak.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2032 -->
+            <div class="timeline-item">
+                <div class="content">
+                    <h3>2032 <span class="badge">🔄 Generational Shift</span></h3>
+                    <ul>
+                        <li><strong>Ultra-Long-Range Route Completion:</strong> Full utilization of A350-1000 and B777-9 ultra-long-haul capabilities expands destinations requiring augmented multi-crew flight ops (Double Crew).</li>
+                        <li><strong>Peak Retirement Wave:</strong> A significant cluster of senior Captains reaches mandatory retirement age, triggering mandatory high-volume replacement hiring.</li>
+                        <li><strong>Selective Direct Entry Captain Hiring:</strong> Potential opening of recruitment drives for experienced Captains (Direct Entry Captains) to mitigate localized command shortages.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2035 -->
+            <div class="timeline-item">
+                <div class="content">
+                    <h3>2035 <span class="badge">🌱 Sustainable Fleet Era</span></h3>
+                    <ul>
+                        <li><strong>100% Next-Gen Fleet Transition:</strong> Complete retirement of legacy aircraft types and full transition to fuel-efficient, next-generation platforms.</li>
+                        <li><strong>Evolved Crew Capabilities:</strong> Strong recruitment focus on "Systems Manager" flight crews capable of operating advanced avionics and automated flight management systems.</li>
+                        <li><strong>Precision Hiring Market:</strong> As overall fleet growth stabilizes, hiring shifts toward high-precision selection criteria—prioritizing pilots with multi-engine/multi-type ratings and strong safety records.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Korean Air Flight Crew Recruitment Outlook. Projections based on fleet modernization and long-term fleet planning data.</p>
+    </footer>
+
+</body>
+</html>
